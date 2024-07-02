@@ -1,11 +1,12 @@
 import { HoverEffect } from "./Cards";
+import styles from "./styles.module.css"
 
 export function CardHoverEffectDemo() {
-  return (
-    <div className="max-w-5xl mx-auto px-8">
-      <HoverEffect items={projects} />
-    </div>
-  );
+    return (
+        <div className={`${styles.custom_scroll} max-w-5xl mx-auto px-8 h-[calc(100vh-4rem)]`}>
+            <HoverEffect items={projects} />
+        </div>
+    );
 }
 export const projects = [
   {
@@ -37,6 +38,12 @@ export const projects = [
     description:
       "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
     link: "https://amazon.com",
+  },
+  {
+    title: "Microsoft",
+    description:
+      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+    link: "https://microsoft.com",
   },
   {
     title: "Microsoft",
