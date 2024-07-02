@@ -1,8 +1,8 @@
 "use client";
 
+import { CardHoverEffectDemo } from "../Cards/Index";
 import Form from "../Form/Form";
 import { Tabs } from "./Tabs";
-
 
 export function TabsDemo() {
   const tabs = [
@@ -12,7 +12,7 @@ export function TabsDemo() {
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>Add Account</p>
-          <Form/>
+          <Form />
         </div>
       ),
     },
@@ -22,8 +22,9 @@ export function TabsDemo() {
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>Your Accounts</p>
+          <CardHoverEffectDemo />
         </div>
-      )
+      ),
     },
     {
       title: "Bookmarked",
@@ -32,8 +33,8 @@ export function TabsDemo() {
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
           <p>Bookmarked</p>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -42,5 +43,3 @@ export function TabsDemo() {
     </div>
   );
 }
-
-
