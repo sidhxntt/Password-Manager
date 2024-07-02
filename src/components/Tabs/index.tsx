@@ -21,9 +21,9 @@ export function TabsDemo() {
       title: "Your Accounts",
       value: "your_accounts",
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
+        <div className={`w-full ${styles.custom_scroll}  relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900`}>
           <p>Your Accounts</p>
-          <div className={`${styles.custom_scroll} font-normal max-w-5xl mx-auto px-8 h-[20cm] relative top-10 border border-white`}>
+          <div className={`${styles.custom_scroll} font-normal max-w-5xl mx-auto px-8 h-[20cm] relative top-10 `}>
             <CardHoverEffectDemo />
           </div>
         </div>

@@ -1,11 +1,10 @@
 import { HoverEffect } from "./Cards";
-import styles from "./styles.module.css"
+
 
 export function CardHoverEffectDemo() {
     return (
-        <div className={`${styles.custom_scroll} font-normal max-w-5xl mx-auto px-8 h-[20cm] relative top-10 border border-white`}>
             <HoverEffect items={projects} />
-        </div>
+
     );
 }
 export const projects = [
@@ -45,12 +44,5 @@ export const projects = [
       "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
     link: "https://microsoft.com",
   },
-  {
-    title: "Microsoft",
-    description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-    link: "https://microsoft.com",
-  },
-
-  
+ 
 ];
