@@ -4,13 +4,18 @@ import styles from "./styles.module.css";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { useForm } from "react-hook-form";
+import { useAuth } from '@clerk/nextjs';
+
 
 const Form = () => {
   const [showPassword, setshowPassword] = useState(false);
   const { register, handleSubmit, formState: { errors, isSubmitting, isValid, isSubmitSuccessful } } = useForm();
+  const { getToken } = useAuth();
 
-  const onSubmit = (data: any) => {
+
+  const onSubmit = async (data: any) => {
     console.log(data);
+    console.log(await getToken())
   };
 
   return (
@@ -86,7 +91,7 @@ const Form = () => {
           <button
             type="submit"
             className="px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
-            disabled={isSubmitting}
+            disabled={isValid&&isSubmitting}
           >
             Save
           </button>
