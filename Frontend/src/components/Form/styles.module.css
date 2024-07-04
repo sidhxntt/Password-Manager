@@ -1,5 +1,4 @@
 .glass{
-
 background: rgba(255, 255, 255, 0.08);
 border-radius: 16px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -7,3 +6,23 @@ backdrop-filter: blur(3.9px);
 -webkit-backdrop-filter: blur(3.9px);
 border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+.alert-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .alert-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 600ms;
+  }
+  .alert-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .alert-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 300ms, transform 300ms;
+  }
+  

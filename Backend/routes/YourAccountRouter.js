@@ -9,7 +9,7 @@ router.get("/", decryptJWT, async (req, res, next) => {
     const {sub} = req.user
     const account = await prisma.account.findMany({where: {userId: sub}})
     if(!account){
-        return res.status(404).json({message: "No Accounts added"})
+        return res.status(404).send({message: "No Accounts added"})
     }
     res.json(account)
  } catch (error) {

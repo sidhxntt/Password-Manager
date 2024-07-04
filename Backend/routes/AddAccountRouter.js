@@ -5,8 +5,6 @@ const router = express.Router();
 import prisma from "../prisma/prisma.js";
 
 router.post("/", decryptJWT, async (req, res, next) => {
-  console.log("Request received:", req.body);
-  console.log("User info:", req.user);
   try {
     const {
       sub,
@@ -23,7 +21,7 @@ router.post("/", decryptJWT, async (req, res, next) => {
     const { name, websiteLink, Username, password } = req.body;
     
     // Check if the user already exists
-    let existingUser = await prisma.user.findUnique({
+    const existingUser = await prisma.user.findUnique({
       where: { userID: sub },
     });
     
@@ -66,7 +64,7 @@ router.post("/", decryptJWT, async (req, res, next) => {
       console.log("Account created successfully")
       res.status(201).send({ message: "Account created successfully" });
     } else {
-      res.status(400).send({ message: "Account already exists" });
+      res.status(400).send({ message: "This account is already saved. Please enter a new one" });
     }
   } catch (error) {
     next()

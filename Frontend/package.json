@@ -22,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.52.1",
+    "react-transition-group": "^4.4.5",
     "styled-components": "^6.1.11",
     "tailwind-merge": "^2.3.0"
   },
