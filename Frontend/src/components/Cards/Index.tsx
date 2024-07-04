@@ -45,7 +45,5 @@ if(error){
     );
   }
 
-
-
   return <HoverEffect items={accounts} />;
 }
