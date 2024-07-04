@@ -3,16 +3,33 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id                   Int       @id @default(autoincrement())
+  userID               String    @unique
+  first_name           String
+  last_name            String
+  full_name            String
+  username             String
+  primary_email        String    @unique
+  primary_phone_number String    @unique
+  profile_pic          String
+  createdAt            Int
+  updatedAt            Int
+  accounts             Account[]
+}
 
-
-model Accounts {
-  id           String @id @default(auto()) @map("_id") @db.ObjectId
-  name         String @unique
-  website_link String @unique
-  username     String @unique
-  password     String @unique
+model Account {
+  id           Int      @id @default(autoincrement())
+  name         String   @unique
+  website_link String   @unique
+  username     String   @unique
+  password     String
+  userId       String
+  user         User     @relation(fields: [userId], references: [userID])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
