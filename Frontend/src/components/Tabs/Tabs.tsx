@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
+import BasicBreadcrumbs from "../BreadCrumbs/BreadCrumbs";
 
 type Tab = {
   title: string;
@@ -74,6 +75,10 @@ export const Tabs = ({
           </button>
         ))}
       </div>
+      <div className="relative top-10 left-4 z-50 ">
+           <BasicBreadcrumbs/>
+      </div>
+     
       <FadeInDiv
         tabs={tabs}
         active={active}

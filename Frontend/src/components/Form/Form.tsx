@@ -67,6 +67,7 @@ const Form = () => {
               <input
                 id="name"
                 type="text"
+                autoComplete="off"
                 {...register("name", { required: true })}
                 className={`block w-full px-4 py-2 mt-2 ${styles.glass} border border-gray-200 rounded-md focus:border-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none`}
               />
@@ -83,6 +84,7 @@ const Form = () => {
               </label>
               <input
                 id="websiteLink"
+                autoComplete="off"
                 type="url"
                 {...register("websiteLink", { required: true })}
                 className={`block w-full px-4 py-2 mt-2 ${styles.glass} border border-gray-200 rounded-md focus:border-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none`}
@@ -100,6 +102,7 @@ const Form = () => {
               </label>
               <input
                 id="Username"
+                autoComplete="off"
                 type="text"
                 {...register("Username", { required: true })}
                 className={`block w-full px-4 py-2 mt-2 ${styles.glass} border border-gray-200 rounded-md focus:border-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none`}
@@ -118,6 +121,7 @@ const Form = () => {
               <div className="relative">
                 <input
                   id="password"
+                  autoComplete="off"
                   type={showPassword ? "text" : "password"}
                   {...register("password", { required: true })}
                   className={`block w-full px-4 py-2 mt-2 ${styles.glass} border border-gray-200 rounded-md focus:border-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none`}

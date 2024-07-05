@@ -19,12 +19,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <header className="flex justify-end p-3 sticky top-0 z-10 overflow-hidden">
-            <UserButton showName/>
-          </header>
-          <main>
-            {children}
-          </main>
+            <header className="flex justify-end p-3 sticky top-0 z-10 overflow-hidden">
+              <UserButton showName />
+            </header>
+            <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>

@@ -2,8 +2,10 @@ import { TabsDemo } from "../Tabs"
 
 const Dashboard = () => {
   return (
-    <TabsDemo/>
+        <TabsDemo/>
   )
 }
-
 export default Dashboard
+
+
+
