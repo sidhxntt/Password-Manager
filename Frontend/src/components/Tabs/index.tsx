@@ -4,6 +4,7 @@ import { CardHoverEffectDemo } from "../Cards/Index";
 import Form from "../Form/Form";
 import { Tabs } from "./Tabs";
 import styles from "./styles.module.css";
+import {RecoilRoot} from 'recoil';
 
 
 export function TabsDemo() {
@@ -25,7 +26,9 @@ export function TabsDemo() {
         <div className={`w-full ${styles.custom_scroll}  relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900`}>
           <p>Your Accounts</p>
           <div className={`${styles.custom_scroll} font-normal max-w-5xl mx-auto px-8 h-[20cm] relative top-10 `}>
-            <CardHoverEffectDemo />
+            <RecoilRoot>
+                 <CardHoverEffectDemo />
+            </RecoilRoot>
           </div>
         </div>
       ),

@@ -8,7 +8,6 @@ import Tooltip from "@mui/material/Tooltip";
 import { LinkPreview } from "../LinkPreview/LinkPreview";
 import AlertDialogDemo from "../Modal/Modal";
 
-
 export const HoverEffect = ({
   items,
   className,
@@ -112,9 +111,7 @@ const Card = ({
               )}
             </button>
           </CardDescription>
-          <AlertDialogDemo/>
-
-
+          <AlertDialogDemo />
           <button className="absolute right-10 bottom-0 opacity-80 ">
             <Tooltip title="Bookmark">
               <BookmarkIcon fontSize="small" />
@@ -135,7 +132,10 @@ const CardTitle = ({
 }) => {
   return (
     <p
-      className={cn("text-zinc-100 font-medium tracking-wide mt-4 text-md", className)}
+      className={cn(
+        "text-zinc-100 font-medium tracking-wide mt-4 text-md",
+        className
+      )}
     >
       {children}
     </p>
