@@ -994,12 +994,6 @@ video {
 .overflow-hidden {
   overflow: hidden;
 }
-.text-balance {
-  text-wrap: balance;
-}
-.text-pretty {
-  text-wrap: pretty;
-}
 .rounded-2xl {
   border-radius: 1rem;
 }
@@ -1174,9 +1168,6 @@ video {
 .text-zinc-400 {
   --tw-text-opacity: 1;
   color: rgb(161 161 170 / var(--tw-text-opacity));
-}
-.text-inherit {
-  color: inherit;
 }
 .opacity-50 {
   opacity: 0.5;
