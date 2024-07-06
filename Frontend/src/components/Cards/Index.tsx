@@ -1,47 +1,63 @@
+// src/components/CardHoverEffectDemo.tsx
 "use client";
-import { HoverEffect } from "./Cards";
+import { HoverEffect } from "./HoverCards";
 import useFetch from "../../Hooks/useFetch";
 import { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-import {useRecoilState} from 'recoil';
-import AccountState from "@/atoms/AccountState";
 
-interface Account {
+import axios from 'axios';
+
+
+export interface Account {
+  id: number;
   name: string;
   username: string;
   password: string;
   website_link: string;
 }
 
-export function CardHoverEffectDemo() {
-  const { data, error, loading } = useFetch<Account[]>("http://localhost:8080/your-accounts");
-  const [updatedData, setUpdatedData] = useRecoilState(AccountState);
+export function  CardHoverEffectDemo() {
+  const { token, data, error, loading } = useFetch<Account[]>("http://localhost:8080/your-accounts");
   const [accounts, setAccounts] = useState<Account[]>([]);
 
   useEffect(() => {
     if (data) {
-      setAccounts(data.map(account => ({
+      setAccounts(data.map((account) => ({
+        id: account.id,
         name: account.name,
         username: account.username,
         password: account.password,
         website_link: account.website_link
       })));
-      console.log("rendered")
     }
   }, [data]);
-  useEffect(() => {
-   console.log("Re-rendered due to deletion")
-  }, [updatedData])
-  
-  
-if(error){
-  return (
-    <div>
-      {error.message}
-    </div>
-  )
-}
+
+  const handleDelete = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:8080/delete-account/${id}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+          }
+      });
+      setAccounts(accounts.filter(account => account.id !== id));
+    } catch (error) {
+      console.error("Failed to delete account:", error);
+    }
+  };
+
+  const onEdit = async(id: number)=>{
+    console.log(id)
+  }
+
+  if (error) {
+    return (
+      <div>
+        {error.message}
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <Box sx={{ width: 300 }}>
@@ -52,5 +68,5 @@ if(error){
     );
   }
 
-  return <HoverEffect items={accounts} />;
+  return <HoverEffect items={accounts} handleDelete={handleDelete} />;
 }

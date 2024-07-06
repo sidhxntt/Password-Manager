@@ -1,16 +1,8 @@
-import React from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useRecoilState } from 'recoil';
-import AccountState from "@/atoms/AccountState";
 
 const AlertDialogDemo = () => {
-  const [updatedData, setUpdatedData] = useRecoilState(AccountState);
-
-  const onDelete = async () => {
-    setUpdatedData(!updatedData);
-  };
 
   return (
     <AlertDialog.Root>
@@ -39,7 +31,7 @@ const AlertDialogDemo = () => {
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <button
-                onClick={onDelete}
+                onClick={handleDelete}
                 className="text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
               >
                 Yes, delete account

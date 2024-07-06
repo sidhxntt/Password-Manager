@@ -885,9 +885,6 @@ video {
 .inset-0 {
   inset: 0px;
 }
-.bottom-0 {
-  bottom: 0px;
-}
 .bottom-10 {
   bottom: 2.5rem;
 }
@@ -912,9 +909,6 @@ video {
 .right-0 {
   right: 0px;
 }
-.right-10 {
-  right: 2.5rem;
-}
 .right-2 {
   right: 0.5rem;
 }
@@ -936,14 +930,11 @@ video {
 .top-\[50\%\] {
   top: 50%;
 }
-.bottom-6 {
-  bottom: 1.5rem;
+.right-6 {
+  right: 1.5rem;
 }
-.bottom-5 {
-  bottom: 1.25rem;
-}
-.bottom-4 {
-  bottom: 1rem;
+.right-10 {
+  right: 2.5rem;
 }
 .z-10 {
   z-index: 10;
@@ -979,9 +970,6 @@ video {
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.mb-4 {
-  margin-bottom: 1rem;
 }
 .block {
   display: block;
@@ -1107,6 +1095,9 @@ video {
 }
 .justify-center {
   justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
 }
 .gap-4 {
   gap: 1rem;
@@ -1235,9 +1226,6 @@ video {
 .p-2 {
   padding: 0.5rem;
 }
-.p-3 {
-  padding: 0.75rem;
-}
 .p-4 {
   padding: 1rem;
 }
@@ -1254,6 +1242,10 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .px-8 {
   padding-left: 2rem;
@@ -1379,18 +1371,6 @@ video {
 }
 .opacity-80 {
   opacity: 0.8;
-}
-.opacity-70 {
-  opacity: 0.7;
-}
-.opacity-15 {
-  opacity: 0.15;
-}
-.opacity-30 {
-  opacity: 0.3;
-}
-.opacity-40 {
-  opacity: 0.4;
 }
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);

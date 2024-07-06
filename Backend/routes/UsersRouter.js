@@ -10,7 +10,7 @@ router.get("/", decryptJWT, async (req, res, next) => {
     const { sub } = req.user;
     const user = await prisma.user.findUnique({
       where: { userID: sub },
-      select: { username: true, profile_pic: true },
+      select: { first_name: true, profile_pic: true },
     });
     if (!user) {
       return res.status(404).send({ message: "No User exists" });

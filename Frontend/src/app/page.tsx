@@ -5,7 +5,7 @@ import TitleComponent from "@/components/FollowingPointer/PointerTitle";
 import useFetch from "@/Hooks/useFetch";
 
 interface UserData {
-  username: string;
+  first_name: string;
   profile_pic: string;
 }
 
@@ -13,12 +13,18 @@ export default function Home() {
   const { data } = useFetch<UserData>("http://localhost:8080/users");
 
   return data ? (
-    <FollowerPointerCard
-      title={<TitleComponent title={data.username} avatar={data.profile_pic} />}
-    >
-      <AuroraBackgroundForHome cursor="cursor-none" />
-    </FollowerPointerCard>
+    <div className="absolute w-full top-0 ">
+      <FollowerPointerCard
+        title={
+          <TitleComponent title={data.first_name} avatar={data.profile_pic} />
+        }
+      >
+        <AuroraBackgroundForHome cursor="cursor-none" />
+      </FollowerPointerCard>
+    </div>
   ) : (
-    <AuroraBackgroundForHome />
+    <div className="absolute w-full top-0 ">
+      <AuroraBackgroundForHome />
+    </div>
   );
 }

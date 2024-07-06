@@ -1,80 +1,35 @@
-import { cn } from "@/utils/cn";
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
-import Tooltip from "@mui/material/Tooltip";
 import { LinkPreview } from "../LinkPreview/LinkPreview";
 import AlertDialogDemo from "../Modal/Modal";
+import { cn } from "@/utils/cn";
+import ModeEditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
+import Tooltip from "@mui/material/Tooltip";
+import { useRecoilValue } from "recoil";
+import { onEditSelector } from "@/Global/selector";
 
-export const HoverEffect = ({
-  items,
-  className,
-}: {
-  items: {
-    name: string;
-    username: string;
-    password: string;
-    website_link: string;
-  }[];
-  className?: string;
-}) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  return (
-    <div
-      className={cn(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10",
-        className
-      )}
-    >
-      {items.map((item, idx) => (
-        <div
-          key={idx}
-          className="relative group block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card
-            name={item.name}
-            username={item.username}
-            password={item.password}
-            link={item.website_link}
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
 const Card = ({
+  id,
   name,
   username,
   password,
   link,
+  // handleDelete,
+  // onEdit,
   className,
 }: {
+  id: number;
   name: string;
   username: string;
   password: string;
   link: string;
+  // handleDelete: (id: number) => void;
+  // onEdit: (id: number) => void;
   className?: string;
 }) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const onEdit = useRecoilValue(onEditSelector);
 
   return (
     <div
@@ -111,12 +66,14 @@ const Card = ({
               )}
             </button>
           </CardDescription>
-          <AlertDialogDemo />
-          <button className="absolute right-10 bottom-0 opacity-80 ">
-            <Tooltip title="Bookmark">
-              <BookmarkIcon fontSize="small" />
-            </Tooltip>
-          </button>
+          <AlertDialogDemo/>
+            <button 
+              onClick={()=>{onEdit(id)}}
+            className="absolute right-10 bottom-[0.35px] opacity-80">
+              <Tooltip title={"edit"}>
+                 <ModeEditOutlinedIcon fontSize="small" />
+              </Tooltip>
+            </button>
         </div>
       </div>
     </div>

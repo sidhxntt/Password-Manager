@@ -13,9 +13,7 @@ model User {
   first_name           String
   last_name            String
   full_name            String
-  username             String
   primary_email        String    @unique
-  primary_phone_number String    @unique
   profile_pic          String
   createdAt            Int
   updatedAt            Int

@@ -7,6 +7,7 @@ const useFetch = <T,>(url: string) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
+  const [token, setToken] = useState<string | null>("")
   const { getToken } = useAuth();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const useFetch = <T,>(url: string) => {
         const template = 'UserInfo';
         const token = await getToken({ template });
         setLoading(true);
+        setToken(token)
         const response = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -32,7 +34,7 @@ const useFetch = <T,>(url: string) => {
     fetchData();
   }, [url]);
 
-  return { data, loading, error };
+  return {token, data, loading, error };
 };
 
 export default useFetch;

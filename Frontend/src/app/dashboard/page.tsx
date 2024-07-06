@@ -1,6 +1,14 @@
 import React from "react";
 import { SignedOut, SignedIn, SignIn } from "@clerk/nextjs";
-import Dashboard from "@/components/Dashboard/Dashboard"; // Adjust the import path according to your project structure
+import dynamic from "next/dynamic";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Password Manager | Dashboard",
+  description: "Account Dashboard Page for users to add their accounts and edit it",
+};
+
+const Dashboard = dynamic(() => import("@/components/Dashboard/Dashboard"), { ssr: false });
 
 const Page = () => {
   return (

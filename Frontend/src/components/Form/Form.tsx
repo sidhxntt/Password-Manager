@@ -35,11 +35,9 @@ const Form = () => {
   const onSubmit = async (data: any) => {
     const template = "UserInfo";
     const token = await getToken({ template });
-    console.log(token);
-    console.log(data);
     try {
       const response = await axios.post(
-        "http://localhost:8080/add-account",
+        "http://localhost:8080/add-account", // Ensure this URL is correct
         data,
         {
           headers: {
@@ -48,10 +46,10 @@ const Form = () => {
         }
       );
       setServerSuccess(response.data.message);
-      setServerErrors(null); // Clear any previous errors
+      setServerErrors(null);
     } catch (error: any) {
       setServerErrors(error.response?.data?.message || error.message);
-      setServerSuccess(null); // Clear any previous success messages
+      setServerSuccess(null);
     }
   };
 
@@ -62,7 +60,7 @@ const Form = () => {
           <div className="flex flex-col space-y-4">
             <div className="text-sm">
               <label className="font-normal" htmlFor="name">
-                Name
+                Website Name
               </label>
               <input
                 id="name"
