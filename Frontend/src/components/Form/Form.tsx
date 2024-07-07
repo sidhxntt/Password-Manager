@@ -55,7 +55,7 @@ const Form = () => {
 
   return (
     <>  
-      <section className="relative top-10 p-8 mx-auto bg-transparent w-96">
+      <section className="relative top-4 p-8 mx-auto bg-transparent w-96">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col space-y-4">
             <div className="text-sm">

@@ -12,16 +12,15 @@ router.delete("/:id", decryptJWT, async (req, res, next) => {
 
     const account = await prisma.account.delete({
       where: {
-        id: parseInt(id, 10), // Ensure id is parsed as an integer
+        id: parseInt(id, 10), 
         userId: sub,
       },
     });
-
+    if(!account){
+      return res.status(404).json({message: "Account not found"});
+    }
     res.status(202).send({ message: "Account successfully deleted" });
   } catch (error) {
-    if (error.code === 'P2025') {
-      return res.status(404).send({ message: "Account doesn't exist" });
-    }
     next(error); // Pass the error to the next middleware
   }
 });

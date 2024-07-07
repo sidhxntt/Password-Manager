@@ -8,13 +8,13 @@ import { Card } from "./Cards";
 export const HoverEffect = ({
   items,
   className,
-  // handleDelete,
-  // onEdit
+  handleDelete,
+  onEdit
 }: {
   items: Account[];
   className?: string;
   handleDelete: (id: number) => void;
-  // onEdit: (id: number) => void;
+  onEdit: (id: number, password:string) => void;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -52,8 +52,8 @@ export const HoverEffect = ({
             username={item.username}
             password={item.password}
             link={item.website_link}
-            // handleDelete={handleDelete}
-            // onEdit={onEdit}
+            handleDelete={handleDelete}
+            onEdit={onEdit}
           />
         </div>
       ))}

@@ -5,9 +5,8 @@ import useFetch from "../../Hooks/useFetch";
 import { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
-
 import axios from 'axios';
-
+import { TextGenerateEffectDemo } from "../TextGeneration";
 
 export interface Account {
   id: number;
@@ -17,7 +16,7 @@ export interface Account {
   website_link: string;
 }
 
-export function  CardHoverEffectDemo() {
+export function CardHoverEffectDemo() {
   const { token, data, error, loading } = useFetch<Account[]>("http://localhost:8080/your-accounts");
   const [accounts, setAccounts] = useState<Account[]>([]);
 
@@ -35,10 +34,10 @@ export function  CardHoverEffectDemo() {
 
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:8080/delete-account/${id}`,{
+      await axios.delete(`http://localhost:8080/delete-account/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
-          }
+        }
       });
       setAccounts(accounts.filter(account => account.id !== id));
     } catch (error) {
@@ -46,9 +45,20 @@ export function  CardHoverEffectDemo() {
     }
   };
 
-  const onEdit = async(id: number)=>{
-    console.log(id)
-  }
+  const onEdit = async (id: number, password: string) => {
+    try {
+      await axios.patch(`http://localhost:8080/update-account/${id}`, { password }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setAccounts(accounts.map(account => 
+        account.id === id ? { ...account, password } : account
+      ));
+    } catch (error) {
+      console.error(`Failed to update password for ${id}:`, error);
+    }
+  };
 
   if (error) {
     return (
@@ -68,5 +78,13 @@ export function  CardHoverEffectDemo() {
     );
   }
 
-  return <HoverEffect items={accounts} handleDelete={handleDelete} />;
+  return (
+    <>
+      {data && data.length > 0 ? (
+        <HoverEffect items={accounts} handleDelete={handleDelete} onEdit={onEdit} />
+      ) : (
+          <TextGenerateEffectDemo/>
+      )}
+    </>
+  );
 }

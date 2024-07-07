@@ -17,7 +17,7 @@ router.get("/", decryptJWT, async (req, res, next) => {
     }
     res.json(user);
   } catch (error) {
-    next()
+    next(error)
   }
 });
 

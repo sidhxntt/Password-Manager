@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+      
       domains: [
         "api.microlink.io", 
-        "img.clerk.com"
+        "img.clerk.com",
+        "raw.githubusercontent.com"
       ],
     },
 };

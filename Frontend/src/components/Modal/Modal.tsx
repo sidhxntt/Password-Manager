@@ -2,8 +2,7 @@ import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const AlertDialogDemo = () => {
-
+const AlertDialogDemo = ({ id, handleDelete }: { id: number; handleDelete: (id: number) => void }) => {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
@@ -31,7 +30,7 @@ const AlertDialogDemo = () => {
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <button
-                onClick={handleDelete}
+                onClick={() => handleDelete(id)}
                 className="text-red11 bg-red4 hover:bg-red5 focus:shadow-red7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
               >
                 Yes, delete account

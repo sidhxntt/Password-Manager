@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <header className="flex justify-between py-2 px-6 sticky top-0 z-10 overflow-hidden">
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="logo"
               width={40}
               height={20}
@@ -35,6 +36,7 @@ export default function RootLayout({
             <UserButton showName />
           </header>
           <main>{children}</main>
+        <Footer/>
         </body>
       </html>
     </ClerkProvider>

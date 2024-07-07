@@ -3,11 +3,9 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 const { mauve, violet, red, blackA } = require('@radix-ui/colors');
 
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    // your paths
     "./src/**/*.{ts,tsx}",
   ],
   darkMode: "class",
@@ -17,6 +15,7 @@ module.exports = {
         aurora: "aurora 60s linear infinite",
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        move: "move 5s linear infinite",
       },
       colors: {
         ...mauve,
@@ -28,6 +27,10 @@ module.exports = {
         overlayShow: {
           from: { opacity: '0' },
           to: { opacity: '1' },
+        },
+        move: {
+          "0%": { transform: "translateX(-200px)" },
+          "100%": { transform: "translateX(200px)" },
         },
         contentShow: {
           from: { opacity: '0', transform: 'translate(-50%, -48%) scale(0.96)' },
