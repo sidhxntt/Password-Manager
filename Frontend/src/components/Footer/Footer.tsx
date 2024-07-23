@@ -10,10 +10,10 @@ const Footer = () => {
       Turning coffee into code ☕️ | Follow me.
       </p>
       <div className="flex items-center space-x-6">
-        <Link href="https://x.com/Sid060402">
+        <Link href="https://x.com/sidhxntt">
           <FaXTwitter />
         </Link>
-        <Link href="https://github.com/Siddhantg2002">
+        <Link href="https://github.com/sidhxntt">
           <FaGithub />
         </Link>
         <Link href="https://www.linkedin.com/in/siddhant-gupta-885384239/">
