@@ -5,9 +5,7 @@ CREATE TABLE "User" (
     "first_name" TEXT NOT NULL,
     "last_name" TEXT NOT NULL,
     "full_name" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
     "primary_email" TEXT NOT NULL,
-    "primary_phone_number" TEXT NOT NULL,
     "profile_pic" TEXT NOT NULL,
     "createdAt" INTEGER NOT NULL,
     "updatedAt" INTEGER NOT NULL,
@@ -34,9 +32,6 @@ CREATE UNIQUE INDEX "User_userID_key" ON "User"("userID");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_primary_email_key" ON "User"("primary_email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "User_primary_phone_number_key" ON "User"("primary_phone_number");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_name_key" ON "Account"("name");
