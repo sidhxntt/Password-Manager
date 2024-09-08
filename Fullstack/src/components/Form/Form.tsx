@@ -37,7 +37,7 @@ const Form = () => {
     const token = await getToken({ template });
     try {
       const response = await axios.post(
-        "http://localhost:8080/add-account", // Ensure this URL is correct
+        "http://localhost:3000/api/add-account", // Ensure this URL is correct
         data,
         {
           headers: {
