@@ -1,12 +1,12 @@
 import cors from 'cors';
-import express from 'express';
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import express, { Express } from "express";
 import connect_to_database from './db.js';
 import allRoutes from './routes/index.js';
 import error_handling from './controllers/error.js';
 
-const app = express();
-const port = 8080;
+const app: Express = express();
+const port = process.env.PORT_NUMBER;
+const server = process.env.SERVER
 
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -20,7 +20,7 @@ const StartServer_with_DB = async () => {
   try {
     await connect_to_database();
     app.listen(port, () => {
-      console.log(`Example app listening on http://localhost:${port}`);
+      console.log(`Example app listening on ${server}`);
     });
   } catch (error) {
     console.log(error.message);

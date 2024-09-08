@@ -1,11 +1,16 @@
-// server.js or your main server file
-import express from "express";
-import decryptJWT from "../controllers/Decryption.js";
+import decryptJWT, { JwtPayload } from "../controllers/Decryption.js";
 import prisma from "../prisma/prisma.js";
-const router = express.Router();
+import express, { Request, Response, NextFunction, Router } from "express";
 
-router.patch("/:id", decryptJWT, async (req, res, next) => {
+const router: Router = express.Router();
+interface UserReq extends Request {
+  user?: JwtPayload;
+}
+router.patch("/:id", decryptJWT, async (req: UserReq, res: Response, next: NextFunction) => {
   try {
+    if (!(req.user)) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
     const { sub } = req.user;
     const { password } = req.body;
     const { id } = req.params;

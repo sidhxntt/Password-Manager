@@ -1,12 +1,22 @@
 // accountRoutes.js
-import express from "express";
-import decryptJWT from "../controllers/Decryption.js";
+import decryptJWT, {JwtPayload} from "../controllers/Decryption.js";
 import prisma from "../prisma/prisma.js";
+import express, { Request, Response, NextFunction, Router } from "express";
 
-const router = express.Router();
+const router: Router = express.Router();
 
-router.post("/", decryptJWT, async (req, res, next) => {
+interface UserReq extends Request {
+  user?: JwtPayload;
+}
+
+router.post("/", decryptJWT, async (req: UserReq, res: Response, next: NextFunction): Promise<void> => {
   try {
+    const user = req.user;
+    if (!user) {
+      res.status(401).send({ message: "Unauthorized" });
+      return;
+    }
+
     const {
       sub,
       first_name,
@@ -16,7 +26,8 @@ router.post("/", decryptJWT, async (req, res, next) => {
       profile_pic,
       createdAt,
       updatedAt,
-    } = req.user;
+    } = user;
+
     const { name, websiteLink, Username, password } = req.body;
 
     const existingUser = await prisma.user.findUnique({
@@ -33,14 +44,14 @@ router.post("/", decryptJWT, async (req, res, next) => {
           primary_email,
           profile_pic,
           createdAt,
-          updatedAt,
+          updatedAt
         },
       });
     }
 
     const existingAccount = await prisma.account.findFirst({
       where: {
-        OR: [{ name: name }, { website_link: websiteLink }],
+        OR: [{ name }, { website_link: websiteLink }],
       },
     });
 
@@ -56,7 +67,7 @@ router.post("/", decryptJWT, async (req, res, next) => {
       });
       res.status(201).send({ message: "Account created successfully" });
     } else {
-      res.status(400).send({ message: "This account is already saved. Please enter a new one" });
+      res.status(400).send({ message: "This account is already saved. Please enter a new one." });
     }
   } catch (error) {
     next(error);
